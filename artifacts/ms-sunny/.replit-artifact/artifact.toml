@@ -1,0 +1,31 @@
+kind = "web"
+previewPath = "/"
+title = "Ms. Sunny - AI Reading Tutor"
+version = "1.0.0"
+id = "artifacts/ms-sunny"
+router = "path"
+
+[[integratedSkills]]
+name = "react-vite"
+version = "1.0.0"
+
+[[services]]
+localPort = 24596
+name = "web"
+paths = ["/"]
+
+[services.development]
+run = "pnpm --filter @workspace/ms-sunny run dev"
+
+[services.env]
+PORT = "24596"
+BASE_PATH = "/"
+
+[services.production]
+build = ["pnpm", "--filter", "@workspace/ms-sunny", "run", "build"]
+publicDir = "artifacts/ms-sunny/dist/public"
+serve = "static"
+
+[[services.production.rewrites]]
+from = "/*"
+to = "/index.html"

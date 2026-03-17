@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ms. Sunny — AI Reading & Phonics Tutor</title>
+  <link rel="stylesheet" href="/static/style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet" />
+</head>
+<body>
+  <div class="app-container">
+
+    <!-- Header -->
+    <header class="header">
+      <div class="header-inner">
+        <div class="logo">
+          <span class="logo-sun">☀️</span>
+          <div>
+            <h1 class="logo-title">Ms. Sunny</h1>
+            <p class="logo-sub">Your AI Reading Tutor</p>
+          </div>
+        </div>
+        <div class="header-badge">
+          <span class="badge-dot"></span>
+          <span>Powered by NVIDIA Nemotron</span>
+        </div>
+      </div>
+    </header>
+
+    <!-- Main layout -->
+    <main class="main-layout">
+
+      <!-- Left: Learning area -->
+      <section class="learning-panel">
+
+        <!-- Ms. Sunny avatar & speech bubble -->
+        <div class="sunny-area">
+          <div class="sunny-avatar">
+            <div class="sunny-face">☀️</div>
+            <div class="sunny-name">Ms. Sunny</div>
+          </div>
+          <div class="speech-bubble" id="speech-bubble">
+            <p id="speech-text">
+              Hello, Superstar! 🌟 I'm Ms. Sunny, and I'm here to help you learn to read!<br/><br/>
+              Let's start with our first question below. Type your answer and press "Submit"!
+            </p>
+          </div>
+        </div>
+
+        <!-- Question card -->
+        <div class="question-card" id="question-card">
+          <div class="question-label">
+            <span class="question-icon">❓</span>
+            <span>Question</span>
+          </div>
+          <p class="question-text" id="question-text">
+            What sound does the letter C make? Give an example word!
+          </p>
+        </div>
+
+        <!-- Answer area -->
+        <div class="answer-area">
+          <label class="answer-label" for="answer-input">Your Answer:</label>
+          <textarea
+            id="answer-input"
+            class="answer-input"
+            placeholder="Type your answer here..."
+            rows="3"
+          ></textarea>
+          <button class="submit-btn" id="submit-btn" onclick="submitAnswer()">
+            <span class="btn-icon">🚀</span> Submit Answer!
+          </button>
+        </div>
+
+        <!-- Result card (hidden initially) -->
+        <div class="result-card hidden" id="result-card">
+          <div class="result-header" id="result-header">
+            <span class="result-icon" id="result-icon">✅</span>
+            <span class="result-title" id="result-title">Great job!</span>
+          </div>
+          <div class="result-body">
+            <div class="result-section" id="explanation-section">
+              <h4>Ms. Sunny says:</h4>
+              <p id="explanation-text"></p>
+            </div>
+          </div>
+        </div>
+
+      </section>
+
+      <!-- Right: AI Thinking panel -->
+      <aside class="thinking-panel">
+        <div class="thinking-header">
+          <span class="thinking-icon">🤖</span>
+          <h2 class="thinking-title">AI Thinking</h2>
+          <div class="thinking-badge">Multi-Agent System</div>
+        </div>
+
+        <div class="thinking-intro">
+          <p>Watch how Ms. Sunny's AI agents reason step by step to help you learn!</p>
+        </div>
+
+        <div class="agents-legend">
+          <div class="legend-item">
+            <span class="agent-dot dot-assessment"></span>
+            <span>Assessment Agent</span>
+          </div>
+          <div class="legend-item">
+            <span class="agent-dot dot-retrieval"></span>
+            <span>Retrieval Agent (RAG)</span>
+          </div>
+          <div class="legend-item">
+            <span class="agent-dot dot-lesson"></span>
+            <span>Lesson Generator</span>
+          </div>
+          <div class="legend-item">
+            <span class="agent-dot dot-reinforcement"></span>
+            <span>Reinforcement Agent</span>
+          </div>
+        </div>
+
+        <div class="thinking-logs" id="thinking-logs">
+          <div class="thinking-placeholder">
+            <div class="placeholder-icon">💭</div>
+            <p>Submit your answer to see the AI agents thinking in action!</p>
+          </div>
+        </div>
+
+        <div class="loading-indicator hidden" id="loading-indicator">
+          <div class="spinner"></div>
+          <span>Agents are thinking...</span>
+        </div>
+
+      </aside>
+
+    </main>
+
+  </div>
+
+  <!-- Stars decoration -->
+  <div class="stars-bg" aria-hidden="true">
+    <span>⭐</span><span>🌟</span><span>✨</span><span>⭐</span><span>🌟</span>
+    <span>✨</span><span>⭐</span><span>🌟</span><span>✨</span>
+  </div>
+
+  <script src="/static/script.js"></script>
+</body>
+</html>

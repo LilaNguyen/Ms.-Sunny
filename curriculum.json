@@ -1,0 +1,274 @@
+{
+  "phonics": [
+    {
+      "letter": "A",
+      "sound": "short-a",
+      "description": "The letter A makes the 'ah' sound like in 'apple'.",
+      "examples": ["apple", "ant", "alligator", "axe"],
+      "rule": "When A is by itself or before a consonant in a short word, it usually makes the short 'ah' sound.",
+      "practice_question": "Which word starts with the letter A? (cat, ant, dog)"
+    },
+    {
+      "letter": "B",
+      "sound": "b",
+      "description": "The letter B makes the 'buh' sound like in 'ball'. Your lips press together and then pop open!",
+      "examples": ["ball", "bear", "bus", "book"],
+      "rule": "B always makes the same 'buh' sound. Press your lips together to make it!",
+      "practice_question": "Can you think of another word that starts with the letter B like 'ball'?"
+    },
+    {
+      "letter": "C",
+      "sound": "hard-c",
+      "description": "The letter C usually makes the 'kuh' sound like in 'cat'. It sounds like a cat saying 'k'!",
+      "examples": ["cat", "cup", "car", "cot"],
+      "rule": "C makes the 'kuh' sound when followed by A, O, or U. It makes the 'sss' sound when followed by E or I.",
+      "practice_question": "Does the word 'cat' start with a C sound or an S sound?"
+    },
+    {
+      "letter": "D",
+      "sound": "d",
+      "description": "The letter D makes the 'duh' sound like in 'dog'. Your tongue taps the top of your mouth!",
+      "examples": ["dog", "duck", "door", "drum"],
+      "rule": "D always makes the same 'duh' sound.",
+      "practice_question": "What sound does D make? Say 'dog' and listen for it!"
+    },
+    {
+      "letter": "E",
+      "sound": "short-e",
+      "description": "The letter E makes the 'eh' sound like in 'egg'.",
+      "examples": ["egg", "elephant", "end", "edge"],
+      "rule": "When E is by itself in a short word, it usually makes the short 'eh' sound.",
+      "practice_question": "What starts with the E sound: egg or apple?"
+    },
+    {
+      "letter": "F",
+      "sound": "f",
+      "description": "The letter F makes the 'fff' sound like in 'fish'. Your top teeth touch your bottom lip!",
+      "examples": ["fish", "frog", "fan", "fire"],
+      "rule": "F always makes the same 'fff' sound.",
+      "practice_question": "Say 'fish' - what letter does it start with?"
+    },
+    {
+      "letter": "G",
+      "sound": "hard-g",
+      "description": "The letter G usually makes the 'guh' sound like in 'goat'. It comes from the back of your throat!",
+      "examples": ["goat", "game", "gift", "green"],
+      "rule": "G makes the 'guh' sound when followed by A, O, or U.",
+      "practice_question": "Does 'goat' start with a G? Say it and listen!"
+    },
+    {
+      "letter": "H",
+      "sound": "h",
+      "description": "The letter H makes the 'huh' sound like in 'hat'. It's like a little puff of air!",
+      "examples": ["hat", "house", "hand", "hop"],
+      "rule": "H always makes the same breathy 'huh' sound.",
+      "practice_question": "Which word starts with H: hat or cat?"
+    },
+    {
+      "letter": "I",
+      "sound": "short-i",
+      "description": "The letter I makes the 'ih' sound like in 'igloo'.",
+      "examples": ["igloo", "inch", "insect", "itch"],
+      "rule": "When I is by itself in a short word, it usually makes the short 'ih' sound.",
+      "practice_question": "Say 'igloo' - what is the first sound you hear?"
+    },
+    {
+      "letter": "J",
+      "sound": "j",
+      "description": "The letter J makes the 'juh' sound like in 'jump'. Your tongue comes near the top of your mouth!",
+      "examples": ["jump", "jar", "jet", "jelly"],
+      "rule": "J always makes the same 'juh' sound.",
+      "practice_question": "Can you jump? What letter does 'jump' start with?"
+    },
+    {
+      "letter": "K",
+      "sound": "k",
+      "description": "The letter K makes the 'kuh' sound like in 'kite'. It sounds just like C in 'cat'!",
+      "examples": ["kite", "king", "kid", "kick"],
+      "rule": "K always makes the 'kuh' sound.",
+      "practice_question": "Which word starts with K: kite or bite?"
+    },
+    {
+      "letter": "L",
+      "sound": "l",
+      "description": "The letter L makes the 'lll' sound like in 'lion'. Your tongue touches the top of your mouth!",
+      "examples": ["lion", "lamp", "leaf", "lemon"],
+      "rule": "L always makes the same smooth 'lll' sound.",
+      "practice_question": "Say 'lion' slowly. What is the first sound?"
+    },
+    {
+      "letter": "M",
+      "sound": "m",
+      "description": "The letter M makes the 'mmm' sound like in 'moon'. Your lips press together!",
+      "examples": ["moon", "monkey", "map", "milk"],
+      "rule": "M always makes the same 'mmm' sound. You can hum it!",
+      "practice_question": "Hum 'mmm' - that's the M sound! What does 'moon' start with?"
+    },
+    {
+      "letter": "N",
+      "sound": "n",
+      "description": "The letter N makes the 'nnn' sound like in 'nest'. Your tongue touches the top of your mouth!",
+      "examples": ["nest", "nose", "nut", "night"],
+      "rule": "N always makes the same 'nnn' sound.",
+      "practice_question": "Say 'nest' slowly. What is the first sound?"
+    },
+    {
+      "letter": "O",
+      "sound": "short-o",
+      "description": "The letter O makes the 'oh' sound like in 'octopus'.",
+      "examples": ["octopus", "ox", "odd", "on"],
+      "rule": "When O is by itself in a short word, it usually makes the short 'oh' sound.",
+      "practice_question": "Say 'octopus' - what sound does it start with?"
+    },
+    {
+      "letter": "P",
+      "sound": "p",
+      "description": "The letter P makes the 'puh' sound like in 'pig'. Your lips pop open like a balloon popping!",
+      "examples": ["pig", "pizza", "pop", "pet"],
+      "rule": "P always makes the same 'puh' popping sound.",
+      "practice_question": "Put your hand near your mouth and say 'pig' - do you feel a little puff of air?"
+    },
+    {
+      "letter": "Q",
+      "sound": "qu",
+      "description": "The letter Q almost always goes with U! Together QU makes the 'kwuh' sound like in 'queen'.",
+      "examples": ["queen", "quack", "quiz", "quick"],
+      "rule": "Q is almost always followed by U. Together they make the 'kwuh' sound.",
+      "practice_question": "What sound do Q and U make together? Like in 'queen'!"
+    },
+    {
+      "letter": "R",
+      "sound": "r",
+      "description": "The letter R makes the 'rrr' sound like in 'rabbit'. Your tongue curls a little bit!",
+      "examples": ["rabbit", "red", "run", "ring"],
+      "rule": "R always makes the same 'rrr' sound.",
+      "practice_question": "Say 'rabbit' - what sound does it start with?"
+    },
+    {
+      "letter": "S",
+      "sound": "s",
+      "description": "The letter S makes the 'sss' sound like in 'sun'. It sounds like a snake!",
+      "examples": ["sun", "snake", "sand", "sock"],
+      "rule": "S usually makes the 'sss' sound like a snake hissing.",
+      "practice_question": "Make the S sound! What does 'sun' start with?"
+    },
+    {
+      "letter": "T",
+      "sound": "t",
+      "description": "The letter T makes the 'tuh' sound like in 'tiger'. Your tongue taps the top of your mouth!",
+      "examples": ["tiger", "top", "tent", "tree"],
+      "rule": "T always makes the same 'tuh' tapping sound.",
+      "practice_question": "Say 'tiger' - what sound does it start with?"
+    },
+    {
+      "letter": "U",
+      "sound": "short-u",
+      "description": "The letter U makes the 'uh' sound like in 'umbrella'.",
+      "examples": ["umbrella", "up", "under", "ugly"],
+      "rule": "When U is by itself in a short word, it usually makes the short 'uh' sound.",
+      "practice_question": "Say 'umbrella' - what sound does it start with?"
+    },
+    {
+      "letter": "V",
+      "sound": "v",
+      "description": "The letter V makes the 'vvv' sound like in 'van'. Your top teeth touch your bottom lip!",
+      "examples": ["van", "vine", "vest", "volcano"],
+      "rule": "V always makes the same buzzing 'vvv' sound.",
+      "practice_question": "Say 'van' - feel your teeth touch your lip for the V sound!"
+    },
+    {
+      "letter": "W",
+      "sound": "w",
+      "description": "The letter W makes the 'wuh' sound like in 'whale'. Your lips make a round shape!",
+      "examples": ["whale", "water", "wind", "worm"],
+      "rule": "W always makes the same 'wuh' sound.",
+      "practice_question": "Round your lips and say 'whale' - that's the W sound!"
+    },
+    {
+      "letter": "X",
+      "sound": "ks",
+      "description": "The letter X usually makes the 'ks' sound like at the end of 'fox'. It's two sounds together!",
+      "examples": ["fox", "box", "wax", "six"],
+      "rule": "X at the end of words makes the 'ks' sound. At the start, it can sound like 'z'.",
+      "practice_question": "Say 'fox' - do you hear the X sound at the end?"
+    },
+    {
+      "letter": "Y",
+      "sound": "y",
+      "description": "The letter Y makes the 'yuh' sound like in 'yellow'. Your mouth smiles a little!",
+      "examples": ["yellow", "yak", "yard", "yell"],
+      "rule": "Y at the start of words makes the 'yuh' sound.",
+      "practice_question": "Say 'yellow' - what sound does it start with?"
+    },
+    {
+      "letter": "Z",
+      "sound": "z",
+      "description": "The letter Z makes the 'zzz' sound like in 'zebra'. It buzzes like a bee!",
+      "examples": ["zebra", "zoo", "zip", "zero"],
+      "rule": "Z always makes the buzzing 'zzz' sound.",
+      "practice_question": "Buzz like a bee - that's the Z sound! What does 'zebra' start with?"
+    }
+  ],
+  "sight_words": [
+    {
+      "word": "the",
+      "level": "beginner",
+      "sentence": "The cat sat on the mat.",
+      "practice_question": "Can you find the word 'the' in this sentence: 'The dog runs fast'?"
+    },
+    {
+      "word": "and",
+      "level": "beginner",
+      "sentence": "I have a cat and a dog.",
+      "practice_question": "Use the word 'and' to join two things you like."
+    },
+    {
+      "word": "is",
+      "level": "beginner",
+      "sentence": "The sun is bright.",
+      "practice_question": "Fill in the blank: The apple ___ red."
+    },
+    {
+      "word": "in",
+      "level": "beginner",
+      "sentence": "The fish lives in the water.",
+      "practice_question": "Where does the fish live? Find the word 'in'!"
+    },
+    {
+      "word": "it",
+      "level": "beginner",
+      "sentence": "It is a big ball.",
+      "practice_question": "Can you say a sentence using the word 'it'?"
+    }
+  ],
+  "blends": [
+    {
+      "blend": "SH",
+      "sound": "sh",
+      "description": "SH together make the 'shh' sound like when you say 'be quiet!' to someone.",
+      "examples": ["ship", "shoe", "shell", "shop"],
+      "practice_question": "What sound do S and H make together? Like in 'ship'!"
+    },
+    {
+      "blend": "CH",
+      "sound": "ch",
+      "description": "CH together make the 'chuh' sound like in 'chair'. Like a train going 'choo choo'!",
+      "examples": ["chair", "cheese", "chicken", "child"],
+      "practice_question": "Say 'chair' - what two letters make the CH sound?"
+    },
+    {
+      "blend": "TH",
+      "sound": "th",
+      "description": "TH together make the 'thh' sound like in 'think'. Put your tongue between your teeth!",
+      "examples": ["think", "three", "there", "the"],
+      "practice_question": "Stick your tongue out a tiny bit and say 'think' - that's the TH sound!"
+    },
+    {
+      "blend": "BL",
+      "sound": "bl",
+      "description": "BL together make the 'bl' sound like in 'blue'. Two sounds blended together!",
+      "examples": ["blue", "black", "blink", "blow"],
+      "practice_question": "Say 'blue' - can you hear both the B and L sounds blended together?"
+    }
+  ]
+}
