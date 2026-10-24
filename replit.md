@@ -1,96 +1,37 @@
-# Workspace
+# Ms. Sunny — Workspace Notes
 
 ## Overview
 
-pnpm workspace monorepo using TypeScript. Each package manages its own dependencies. Also contains the **Ms. Sunny** Python Flask multi-agent AI education system.
+This repository contains a Python Flask application for an AI reading and phonics tutor, plus a React/Vite frontend and additional Replit workspace packages. The core AI workflow is implemented in Python and orchestrated with LangGraph.
 
-## Stack
+## Core application
 
-- **Monorepo tool**: pnpm workspaces
-- **Node.js version**: 24
-- **Python version**: 3.11
-- **Package manager**: pnpm (Node), uv/pip (Python)
-- **TypeScript version**: 5.9
-- **API framework**: Express 5 (TS) + Flask (Python)
-- **Database**: PostgreSQL + Drizzle ORM
-- **Validation**: Zod (`zod/v4`), `drizzle-zod`
-- **API codegen**: Orval (from OpenAPI spec)
-- **Build**: esbuild (CJS bundle)
-- **AI**: LangGraph multi-agent + NVIDIA Nemotron (`nvidia/nemotron-nano-9b-v2`)
+- `app.py`: Flask HTTP API and Flask-served fallback interface
+- `agents.py`: four agent functions and LangGraph routing
+- `rag.py`: keyword/rule-based retrieval from `curriculum.json`
+- `curriculum.json`: local phonics, blend, and sight-word content
+- `nemotron_api.py`: NVIDIA Nemotron client
+- `templates/` and `static/`: Flask HTML/CSS/JavaScript interface
+- `artifacts/ms-sunny/`: React/Vite frontend used in the Replit workspace
 
-## Structure
+## Agent workflow
 
-```text
-artifacts-monorepo/
-├── artifacts/              # Deployable applications
-│   ├── api-server/         # Express API server (TypeScript)
-│   └── ms-sunny/           # React + Vite frontend for Ms. Sunny
-├── lib/                    # Shared libraries
-│   ├── api-spec/           # OpenAPI spec + Orval codegen config
-│   ├── api-client-react/   # Generated React Query hooks
-│   ├── api-zod/            # Generated Zod schemas from OpenAPI
-│   └── db/                 # Drizzle ORM schema + DB connection
-├── scripts/                # Utility scripts
-├── app.py                  # Flask app entry point (serves GET /, POST /answer)
-├── agents.py               # LangGraph multi-agent workflow
-├── nemotron.py             # NVIDIA Nemotron model client
-├── rag.py                  # RAG retrieval from curriculum.json
-├── curriculum.json         # Phonics/reading knowledge base (26 letters, blends, sight words)
-├── templates/index.html    # Flask HTML template (fallback)
-├── static/style.css        # Flask static CSS (fallback)
-├── static/script.js        # Flask static JS (fallback)
-├── pnpm-workspace.yaml     # pnpm workspace
-├── tsconfig.base.json      # Shared TS options
-├── tsconfig.json           # Root TS project references
-└── package.json            # Root package with hoisted devDeps
-```
+1. **Assessment Agent** evaluates a student's answer and identifies possible learning gaps.
+2. **Retrieval Agent** searches the local curriculum for a relevant concept.
+3. **Lesson Generator Agent** uses the retrieved concept in a Nemotron prompt to generate a child-friendly explanation.
+4. **Reinforcement Agent** creates follow-up practice content.
 
-## Ms. Sunny AI System
+The graph routes correct answers to the next-question path. Incorrect answers continue through retrieval, lesson generation, and reinforcement.
 
-### Architecture
-- **Frontend**: React + Vite at `artifacts/ms-sunny/` (served at `/`)
-- **Backend**: Flask API at `app.py` (port 8000, `Ms. Sunny Flask Backend` workflow)
-- **Proxy**: Vite dev server proxies `/answer` → Flask port 8000
+## Retrieval notes
 
-### Agents (LangGraph)
-1. **Assessment Agent** — Evaluates student's answer with Nemotron model
-2. **Retrieval Agent (RAG)** — Searches `curriculum.json` for relevant phonics concept
-3. **Lesson Generator Agent** — Generates kid-friendly explanation using Nemotron
-4. **Reinforcement Agent** — Creates new practice question if student struggles
+The current retriever matches query text against curriculum fields such as letters, example words, sounds, blends, and sight words. It uses keyword/rule-based matching, not embedding similarity or a vector database. Unmatched queries fall back to a randomly selected phonics concept.
 
-### Reasoning Loop
-`THOUGHT → ACTION → OBSERVATION → PLAN`
+## Environment
 
-### API Endpoints
-- `GET /` — Returns Flask HTML template (fallback)
-- `POST /answer` — Receives student answer, runs LangGraph workflow, returns:
-  - `is_correct` (bool)
-  - `explanation` (str)
-  - `next_question` (str)
-  - `learning_gaps` (list)
-  - `reasoning_logs` (list of THOUGHT/ACTION/OBSERVATION/PLAN dicts)
+- Python 3.11+
+- `NVIDIA_API_KEY` is required for Nemotron calls. Set it in the environment or Replit Secrets; never commit the key.
+- The Flask backend can be started with `python app.py`.
+- The Vite frontend proxies `/answer` and `/question` to a Flask backend at `http://localhost:8000`. Its Vite config requires `PORT` and `BASE_PATH`.
 
-### Environment Variables
-- `NVIDIA_API_KEY` — Required for NVIDIA Nemotron model API calls. Get from https://build.nvidia.com/
-
-### Running
-- Frontend: `artifacts/ms-sunny: web` workflow (pnpm dev, port 24596)
-- Backend: `Ms. Sunny Flask Backend` workflow (`PORT=8000 python app.py`)
-
-## TypeScript & Composite Projects
-
-Every package extends `tsconfig.base.json` which sets `composite: true`. The root `tsconfig.json` lists all packages as project references.
-
-## Packages
-
-### `artifacts/ms-sunny` (`@workspace/ms-sunny`)
-React + Vite frontend for Ms. Sunny. Proxies `/answer` to Flask on port 8000.
-
-### `artifacts/api-server` (`@workspace/api-server`)
-Express 5 API server (not used by Ms. Sunny).
-
-### `lib/db` (`@workspace/db`)
-Database layer using Drizzle ORM with PostgreSQL.
-
-### `lib/api-spec` (`@workspace/api-spec`)
-OpenAPI 3.1 spec and Orval codegen config.
+Some other workspace packages and generated files are present in this repository; they are not part of the core Python agent workflow.

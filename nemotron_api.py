@@ -1,14 +1,32 @@
+"""Small, lazy-initialized client for the NVIDIA OpenAI-compatible API.
+
+Importing this module does not require a configured API key. This lets the
+Flask app start locally and lets the agent's rule-based fallback handle
+requests when the model is unavailable.
+"""
 import os
 from openai import OpenAI
 
-API_KEY = os.environ.get("NVIDIA_API_KEY") or os.environ.get("NEMOTRON_API_KEY")
 BASE_URL = "https://integrate.api.nvidia.com/v1"
 MODEL = "nvidia/nemotron-nano-9b-v2"
 
-if not API_KEY:
-    raise ValueError("NVIDIA_API_KEY is not set in Replit secrets!")
+_client = None
+_client_api_key = None
 
-client = OpenAI(base_url=BASE_URL, api_key=API_KEY)
+
+def get_client() -> OpenAI:
+    """Return a cached client, reading credentials when the first call is made."""
+    global _client, _client_api_key
+    api_key = os.environ.get("NVIDIA_API_KEY") or os.environ.get("NEMOTRON_API_KEY")
+    if not api_key:
+        raise ValueError(
+            "NVIDIA_API_KEY (or NEMOTRON_API_KEY) is not set. "
+            "Configure it in your environment or Replit Secrets to enable Nemotron."
+        )
+    if _client is None or _client_api_key != api_key:
+        _client = OpenAI(base_url=BASE_URL, api_key=api_key)
+        _client_api_key = api_key
+    return _client
 
 
 def call_nemotron(
@@ -16,15 +34,18 @@ def call_nemotron(
     user_prompt: str,
     temperature: float = 0.7,
 ) -> str:
-    messages = [
-        {"role": "system", "content": system_prompt},
-        {"role": "user", "content": user_prompt},
-    ]
-    completion = client.chat.completions.create(
+    """Send a chat completion request and return its text response."""
+    completion = get_client().chat.completions.create(
         model=MODEL,
-        messages=messages,
+        messages=[
+            {"role": "system", "content": system_prompt},
+            {"role": "user", "content": user_prompt},
+        ],
         temperature=temperature,
         top_p=0.9,
         max_tokens=512,
     )
-    return completion.choices[0].message.content.strip()
+    message = completion.choices[0].message.content
+    if not message:
+        raise RuntimeError("Nemotron returned an empty response.")
+    return message.strip()
