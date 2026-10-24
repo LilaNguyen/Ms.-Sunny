@@ -29,22 +29,25 @@ def get_initial_question():
 
 @app.route("/answer", methods=["POST"])
 def answer():
-    data = request.get_json()
-
-    if not data:
-        return jsonify({"error": "No JSON body provided"}), 400
+    data = request.get_json(silent=True)
+    if not isinstance(data, dict):
+        return jsonify({"error": "A JSON object is required"}), 400
 
     question = data.get("question", INITIAL_QUESTION)
-    student_answer = data.get("answer", "").strip()
+    student_answer = data.get("answer", "")
     current_letter = data.get("current_letter")
 
-    if not student_answer:
-        return jsonify({"error": "No answer provided"}), 400
+    if not isinstance(question, str) or not question.strip():
+        return jsonify({"error": "Question must be a non-empty string"}), 400
+    if not isinstance(student_answer, str) or not student_answer.strip():
+        return jsonify({"error": "Answer must be a non-empty string"}), 400
+    if current_letter is not None and not isinstance(current_letter, str):
+        return jsonify({"error": "current_letter must be a string"}), 400
 
     try:
         result = run_agents(
-            question=question,
-            student_answer=student_answer,
+            question=question.strip(),
+            student_answer=student_answer.strip(),
             current_letter=current_letter,
         )
         return jsonify({
@@ -56,10 +59,14 @@ def answer():
             "choices": result["choices"],
             "current_letter": result["current_letter"],
         })
-    except ValueError as ve:
-        return jsonify({"error": str(ve)}), 503
-    except Exception as e:
-        return jsonify({"error": f"An error occurred: {str(e)}"}), 500
+    except ValueError as exc:
+        # Missing model credentials are surfaced as a configuration response.
+        app.logger.warning("Unable to process answer due to configuration: %s", exc)
+        return jsonify({"error": str(exc)}), 503
+    except Exception:
+        # Keep internal exception details in server logs, not in API responses.
+        app.logger.exception("Unexpected error while processing student answer")
+        return jsonify({"error": "An unexpected error occurred while processing the answer."}), 500
 
 
 if __name__ == "__main__":

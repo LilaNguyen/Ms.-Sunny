@@ -1,6 +1,7 @@
 import json
 import os
 import random
+import re
 from typing import Optional
 
 CURRICULUM_PATH = os.path.join(os.path.dirname(__file__), "curriculum.json")
@@ -88,7 +89,7 @@ def retrieve_concept(query: str) -> dict:
         if (
             f"letter {letter}" in query_lower
             or any(f" {ex} " in f" {query_lower} " for ex in examples)
-            or phonics["sound"].lower() in query_lower
+            or re.search(rf"\b{re.escape(phonics['sound'].lower())}\b", query_lower)
         ):
             choices = generate_choices_for_letter(phonics["letter"], curriculum)
             return {
@@ -103,9 +104,9 @@ def retrieve_concept(query: str) -> dict:
         blend_lower = blend["blend"].lower()
         examples = [e.lower() for e in blend["examples"]]
         if (
-            blend_lower in query_lower
-            or any(ex in query_lower for ex in examples)
-            or blend["sound"].lower() in query_lower
+            re.search(rf"\b{re.escape(blend_lower)}\b", query_lower)
+            or any(re.search(rf"\b{re.escape(ex)}\b", query_lower) for ex in examples)
+            or re.search(rf"\b{re.escape(blend['sound'].lower())}\b", query_lower)
         ):
             return {
                 "type": "blend",

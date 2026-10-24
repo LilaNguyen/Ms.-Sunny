@@ -6,7 +6,7 @@ from langgraph.graph import StateGraph, END
 from nemotron_api import call_nemotron
 from rag import retrieve_concept, load_curriculum, generate_choices_for_letter
 
-LETTER_SEQUENCE = list("ABCDEFGHIJKLMNOPRSTW")
+LETTER_SEQUENCE = list("ABCDEFGHIJKLMNOPQRSTUVWXYZ")
 
 
 class AgentState(TypedDict):
